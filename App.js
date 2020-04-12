@@ -1,4 +1,3 @@
-/*This is an example of File Picker in React Native*/
 import React from 'react';
 import {
   StyleSheet,
@@ -78,13 +77,6 @@ export default class App extends React.Component {
             .then((csvRow)=>{
                 console.log(csvRow)
             })
-
-        })
-
-      RNFetchBlob.fs.stat(res.uri)
-        .then(stat => {
-          const { path } = stat
-
         })
 
       this.setState({ singleFile: res });
@@ -165,40 +157,6 @@ export default class App extends React.Component {
           URI: {this.state.singleFile.uri ? this.state.singleFile.uri : ''}
           {'\n'}
         </Text>
-        <View style={{ backgroundColor: 'grey', height: 2, margin: 10 }} />
-        {/*To multiple single file attribute*/}
-        <TouchableOpacity
-          activeOpacity={0.5}
-          style={styles.buttonStyle}
-          onPress={this.selectMultipleFile.bind(this)}>
-          {/*Multiple files selection button*/}
-          <Text style={{ marginRight: 10, fontSize: 19 }}>
-            Click here to pick multiple files
-          </Text>
-          <Image
-            source={{
-              uri: 'https://img.icons8.com/offices/40/000000/attach.png',
-            }}
-            style={styles.imageIconStyle}
-          />
-        </TouchableOpacity>
-        <ScrollView>
-          {/*Showing the data of selected Multiple files*/}
-          {this.state.multipleFile.map((item, key) => (
-            <View key={key}>
-              <Text style={styles.textStyle}>
-                File Name: {item.name ? item.name : ''}
-                {'\n'}
-                Type: {item.type ? item.type : ''}
-                {'\n'}
-                File Size: {item.size ? item.size : ''}
-                {'\n'}
-                URI: {item.uri ? item.uri : ''}
-                {'\n'}
-              </Text>
-            </View>
-          ))}
-        </ScrollView>
       </View>
     );
   }
