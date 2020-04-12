@@ -12,6 +12,8 @@ import {
 } from 'react-native';
 
 import DocumentPicker from 'react-native-document-picker';
+import RNFetchBlob from 'rn-fetch-blob'
+import csv  from 'csvtojson'
 
 const requestCameraPermission = async () => {
   try {
@@ -65,6 +67,26 @@ export default class App extends React.Component {
       console.log('File Name : ' + res.name);
       console.log('File Size : ' + res.size);
       //Setting the state to show single file attributes
+
+      RNFetchBlob.fs.readFile(res.uri, 'utf8')
+        .then((data) => {
+          // handle the data ..
+          console.log(data)
+
+          csv({ output: "csv" })
+            .fromString(data)
+            .then((csvRow)=>{
+                console.log(csvRow)
+            })
+
+        })
+
+      RNFetchBlob.fs.stat(res.uri)
+        .then(stat => {
+          const { path } = stat
+
+        })
+
       this.setState({ singleFile: res });
     } catch (err) {
       //Handling any exception (If any)
