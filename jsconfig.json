@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      // "*": ["./modules/*"],
+      "ui": ["./src/components"],
+      "@theme": ["./src/theme"],
+    }
+  },
+  "noImplicitAny": false
+}
