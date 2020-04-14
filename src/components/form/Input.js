@@ -9,6 +9,7 @@ const Input = styled.TextInput`
   font-size: 16px;
   padding-left: 10px;
   padding-right: 10px;
+  border: 1px solid ${getColor('border')};
 `
 
 export default Input

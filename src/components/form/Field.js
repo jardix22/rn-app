@@ -14,11 +14,17 @@ const Label = styled.Text`
   margin-bottom: 5px;
 `
 
-const Field = React.forwardRef(({ control: Component, label, children, ...rest }, ref) => {
+const Error = styled.Text`
+  color: ${ getColor('status-error') };
+  margin-top: 5px;
+`
+
+const Field = React.forwardRef(({ control: Component, label, children, error, ...rest }, ref) => {
   return (
     <Container>
-      <Label>{ label }</Label>
+      { label && <Label>{ label }</Label>}
       <Component ref={ ref } { ...rest }/>
+      { error && <Error>{ error.message }</Error> }
     </Container>
   )
 })
