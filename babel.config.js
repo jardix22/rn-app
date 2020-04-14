@@ -9,6 +9,7 @@ module.exports = {
 
       "alias": {
         "ui": "./src/components",
+        "app": "./src/modules",
         "@theme": "./src/theme",
       }
     }],
