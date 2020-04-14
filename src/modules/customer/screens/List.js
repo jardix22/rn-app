@@ -34,7 +34,7 @@ const List = props => {
   return (
     <Box>
       <Heading>Clientes</Heading>
-      { customers.map(data => <CustomerCard { ...data } />) }
+      { customers.map((data, key) => <CustomerCard key={ key } { ...data } />) }
     </Box>
   )
 }
